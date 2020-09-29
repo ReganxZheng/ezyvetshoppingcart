@@ -6,11 +6,13 @@ import { AnyAction, bindActionCreators, Dispatch } from 'redux';
 import { Grid, AppBar, Toolbar, IconButton, Badge } from '@material-ui/core';
 import { connect } from 'react-redux';
 
+import * as cartSelectors from './redux/cart/cart.selector';
 import * as selectors from './redux/product/product.selector';
-import image from './images/ezyvet.jpg';
-import { Product as ProductType } from './redux/product/product.duck';
-import { getAllProducts } from './redux/product/product.duck';
+import Cart from './components/cart';
 import Product from './components/product';
+import image from './images/ezyvet.jpg';
+import { Product as ProductType, getAllProducts } from './redux/product/product.duck';
+import { useDrawerProps } from './hooks/useDrawerProps';
 
 const GridContainer = styled(Grid).attrs({
   container: true,
@@ -40,9 +42,12 @@ type Actions = {
 interface Props {
   actions: Actions;
   productList: ProductType[];
+  productCount: number;
 }
 
-const App = ({ actions, productList }: Props) => {
+const App = ({ actions, productList, productCount }: Props) => {
+  const { isDrawerOpen, openDrawer, closeDrawer } = useDrawerProps();
+
   useEffect(() => {
     actions.getAllProducts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -55,8 +60,8 @@ const App = ({ actions, productList }: Props) => {
           <IconButton disabled edge="start" color="inherit">
             <EzyVetImage />
           </IconButton>
-          <IconButton color="inherit">
-            <Badge badgeContent={2} color="secondary" data-testid="Cart">
+          <IconButton color="inherit" onClick={() => openDrawer()}>
+            <Badge badgeContent={productCount} color="secondary" data-testid="Cart">
               <ShoppingCartIcon />
             </Badge>
           </IconButton>
@@ -67,12 +72,14 @@ const App = ({ actions, productList }: Props) => {
           <Product key={index} product={item} />
         ))}
       </GridContainer>
+      <Cart isDrawerOpen={isDrawerOpen} closeDrawer={closeDrawer} />
     </div>
   );
 };
 
 const mapStateToProps = R.applySpec({
   productList: selectors.productListSelector,
+  productCount: cartSelectors.productCountSelector,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => ({

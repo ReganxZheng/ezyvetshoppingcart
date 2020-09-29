@@ -4,7 +4,9 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import { Product } from 'src/redux/product/product.duck';
 import * as Styled from './product.styled';
 
-type Actions = {};
+type Actions = {
+  addToCart: Function;
+};
 
 interface Props {
   product: Product;
@@ -23,7 +25,9 @@ export default ({ product, actions }: Props) => {
           <Styled.ProductPrice>${price}</Styled.ProductPrice>
         </Styled.ProductCardContent>
         <Styled.ActionWrapper>
-          <Styled.AddToCardButton startIcon={<AddShoppingCartIcon />}>Add to Cart</Styled.AddToCardButton>
+          <Styled.AddToCardButton startIcon={<AddShoppingCartIcon />} onClick={() => actions.addToCart(product)}>
+            Add to Cart
+          </Styled.AddToCardButton>
         </Styled.ActionWrapper>
       </Styled.ProductCard>
     </Styled.GridItem>
