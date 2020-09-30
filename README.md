@@ -1,3 +1,7 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c668aabb-48bf-4b20-86d3-4dae07726a72/deploy-status)](https://app.netlify.com/sites/quizzical-poincare-e6b55e/deploys)
+
+[View Site](https://quizzical-poincare-e6b55e.netlify.app/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) with `TypeScript` template.
 
 ## Project in a Nutshell
