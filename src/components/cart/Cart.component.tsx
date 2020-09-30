@@ -2,6 +2,7 @@ import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core';
 import { withStyles, Theme, createStyles } from '@material-ui/core/styles';
 import CancelIcon from '@material-ui/icons/Cancel';
+import CloseIcon from '@material-ui/icons/Close';
 
 import * as Styled from './cart.styled';
 import { CartProduct } from 'src/redux/cart/cart.duck';
@@ -48,6 +49,10 @@ export default ({ actions, isDrawerOpen, closeDrawer, cartList, isCartEmpty, tot
   return (
     <>
       <Styled.CartDrawer open={isDrawerOpen} onClose={() => closeDrawer()}>
+        <Styled.CloseDrawerIconWrapper>
+          <CloseIcon onClick={() => closeDrawer()} />
+        </Styled.CloseDrawerIconWrapper>
+        <Styled.CartTitle>My Cart</Styled.CartTitle>
         {isCartEmpty ? (
           <Styled.EmptyCartWrapper>
             <Styled.EmptyCartTitle>You don't have anything in cart</Styled.EmptyCartTitle>

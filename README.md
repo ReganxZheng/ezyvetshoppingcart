@@ -1,4 +1,49 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) with `TypeScript` template.
+
+## Project in a Nutshell
+
+This is a shopping cart build with React in TypeScript, with `redux-saga` to handle the side effect where a function return promise as Mock API. `redux` as the centralized store to keep state flows within the application. `reselect` for process/directly get the data from redux store.
+
+## Folder Structures
+
+```
+.
+├── node_modules
+├── public
+├── src
+├── .gitignore
+├── .prettierrc.json
+├── package-lock.json
+├── package.json
+├── tsconfig.json
+└── README.md
+```
+
+## Techniques
+
+`RamdaJS`: JavaScript utils for functional programming
+
+`Reselect`: Selector for interact with redux store.
+
+`Redux-actions`: Create redux actions to follow [Redux-duck](https://github.com/erikras/ducks-modular-redux) structure.
+
+`husky`: Git pre-commit and pre-push utils to keep the project consistency
+
+`prettier`: Code formatter
+
+## Naming Rules
+
+`*.component.tsx`: Component actual get rendered in App.
+
+`*.container.tsx`: Interface for redux and reselect to interact with
+
+`*.styled.tsx`: Wrapper to keep all styled components.
+
+`*.utils.tsx`: Pure function wrapper for process in any purpose
+
+`*.duck.tsx`: Redux wrapper which keep both actions and reducers
+
+`*.selector.tsx`: Where keep all selector per redux state
 
 ## Available Scripts
 

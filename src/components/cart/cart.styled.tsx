@@ -62,3 +62,29 @@ export const TotalDisplayWrapper = styled(Typography).attrs({
   gutterBottom: true,
   variant: 'subtitle1',
 })``;
+
+export const CartTitle = styled(Typography).attrs({
+  gutterBottom: true,
+  variant: 'h3',
+})`
+  text-align: center;
+  margin: 10px 0;
+`;
+
+export const CloseDrawerIconWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 5px 10px;
+
+  svg {
+    cursor: pointer;
+  }
+
+  &:hover {
+    svg {
+      color: #c1272d;
+      border-radius: 50%;
+    }
+  }
+`;
